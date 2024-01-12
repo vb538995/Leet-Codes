@@ -1,0 +1,27 @@
+// Maximum units of boxes in the Truck , but not exceeding the trucksize
+//Given : 2D array(boxTypes) ={ {Types of box} , {Number of units per box}}
+class Solution {
+public:
+    static bool cmp(const vector<int> &a , vector<int> &b){
+        if(a[1]==b[1]){
+            return a[0]>b[0];
+        }
+        return a[1]>b[1];
+    }
+    int maximumUnits(vector<vector<int>>& boxTypes, int truckSize) {
+        int i,sum=0;
+          sort(boxTypes.begin() , boxTypes.end() , cmp);
+
+        for(i=0;i<boxTypes.size();i++){
+                if(truckSize-boxTypes[i][0]<=0){
+                    sum += truckSize*boxTypes[i][1];
+                    break;
+                }
+                else{
+                    sum += boxTypes[i][0]*boxTypes[i][1];
+                    truckSize-=boxTypes[i][0];
+                }
+        }
+        return sum;
+    }  
+};
