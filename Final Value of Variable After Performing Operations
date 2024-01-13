@@ -1,0 +1,20 @@
+//Array of string was given and based on the values in each index of the array we have to perfrom increment and decrement operation on a variablr
+// that initially contains value as '0'.
+
+class Solution {
+public:
+    int finalValueAfterOperations(vector<string>& operations) {
+        int x=0;
+        int i;
+        for(i=0;i<operations.size();i++){
+            string var = operations[i];
+           if(var=="X++"|| var=="++X"){
+               x++;
+           }
+           else{
+               x--;
+           }
+        }
+        return x;
+    }
+};
