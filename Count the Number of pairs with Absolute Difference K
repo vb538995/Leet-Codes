@@ -1,0 +1,19 @@
+//So In this question we need to return the number of pairs that have absolute difference equal to the passed parameter K.
+//Here iterative method is used to acccess each array element and comparing the difference with K. If equals , then increment the flag value by 1 and at last 
+//return the flag value. 
+
+class Solution {
+public:
+    int countKDifference(vector<int>& nums, int k) {
+        int i ,j,x=0,res;
+        for(i=0;i<nums.size();i++){
+            for(j=i+1;j<nums.size();j++){
+                res = nums[i]-nums[j];
+                if(res==k || abs(res)==k){
+                   x++;
+                }
+            }
+        }
+        return x;
+    }
+};
