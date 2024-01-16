@@ -1,0 +1,19 @@
+// Convert 1d Array Into 2D Array || Simple and easy 
+// For this we need to take a 2D matrix whose product of row and col should equal to the size of the 1D array. If the size of 1D array is 2 or less  return an empty array.
+//We should remember the 'vector' keyword in which the declaration of the array is a bit different from other programming language.
+class Solution {
+public:
+    vector<vector<int>> construct2DArray(vector<int>& original, int m, int n) {
+         vector<vector<int>> b(m,vector<int>(n));
+        int i , j,k=0;
+        if(original.size()!=m*n){
+            return {};
+        }
+        for(i=0;i<m;i++){
+            for(j=0;j<n;j++){
+                b[i][j]=original[k++];
+            }
+        }
+        return b;
+    }
+};
