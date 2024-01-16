@@ -1,0 +1,25 @@
+//Maximum Difference between Increasing Elements. Important : The Difference should not be negative and 'j' should be greater than 'i'.
+//For this I took 2 variables 'i' and 'j' as they are need for nesting loops. 'j' equals to 'i'+1.Rest of the part is the code.
+
+class Solution {
+public:
+    int maximumDifference(vector<int>& nums) {
+        int i , j,max=0;
+        
+        for(i=0;i<nums.size();i++){
+            for(j=i+1;j<nums.size();j++){
+                int x=nums[j]-nums[i];
+                if(x>max){
+                    max=x;
+                }
+            }
+        }
+        if(max<=0){
+            return -1;
+        }
+        else{
+           return max;
+        }
+        
+    }
+};
