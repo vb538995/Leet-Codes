@@ -1,0 +1,24 @@
+//Find the middle index in the array.
+//This need to be approached by using the iterative method. In this , 2 variables 'i' and 'j'  has been taken in which 'i' keeps the recod of the index where the condition is
+// satisfied (sum of elements at right of 'i' and sum of elements at left of it is equal). If the condition satisfies then return the variable , else return -1.
+class Solution {
+public:
+    int findMiddleIndex(vector<int>& nums) {
+        int i , j,m;
+        int s,t;
+        for(i=0;i<nums.size();i++){
+            s=0;
+            t=0;
+            for(j=i-1;j>=0;j--){
+                s+=nums[j];
+            }
+            for(j=i+1;j<nums.size();j++){
+                t+=nums[j];
+            }
+            if(s==t){
+               return i;
+            }
+        }
+        return -1;
+    }
+};
