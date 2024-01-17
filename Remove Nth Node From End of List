@@ -1,0 +1,45 @@
+//Remove The Nth Node From The End of Linked List 
+//In this Approach we need first to calculate the index of that node from front as we can not traverse back if we reach the end of the node and the 
+//length of the list is not given. So we need to first find out the length of the list. Take a flag value 'c' whose initial value is 0 and take a new pointer 'p' that will traverse the list till
+//it reaches  the 'NULL' and after each node flag value that is 'c'. Then subtract the parameter value 'n' to get the position of the node that needs to be deleted from the front and then traverse 
+//a new pointer up to just before  the node that is to be deleted. Then change the pointer next value to next of next, this will surpass the node address that we wanted to delete.
+//and return the head. 
+
+// But remember that if the length of the list is 1 or the length of the list and node to be deleted are equal then they need to be treated specially.
+
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+    ListNode* t;
+    ListNode* p;
+    p=head;
+    t=head;
+    int i, c;  // i for loop and c to count the number of nodes
+    while(p!=NULL){
+        p=p->next;
+        c++;
+    }
+    if(c==1){
+        return NULL;
+    }
+    if(c==n){
+        return head->next;
+    }
+    for(i=0;i<c-n-1;i++){
+        t=t->next;
+    }
+    t->next=t->next->next;
+    return head;
+    }
+};
