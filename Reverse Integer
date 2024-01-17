@@ -1,0 +1,25 @@
+//Reverse Integer question Solution in C++.
+// First of all don't look after the sign of the integer, you can ignore the sign as it does not affect the result.
+//The rest of the code is simple and easy look below, Only by using the modulus operator and a 'while' loop.
+
+class Solution {
+public:
+    int reverse(int x) {
+        int y;
+        int k,l;
+        
+       long sum=0;
+        while(x!=0){
+            k=x%10;
+            sum=sum*10+k;
+            x=x/10;
+            
+        }
+        if(sum > 2147483647 || sum < -2147483648){
+            return 0;
+        }
+        return sum;
+
+        
+    }
+};
