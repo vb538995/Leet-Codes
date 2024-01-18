@@ -1,0 +1,20 @@
+//Number of Good Pairs
+// In this solution we have to find the number of pairs(i,j) in the array that have same element value. But  with contraint i < J .
+//2 variables 'i' , 'j' has been taken for 2 nested loops and comparing each values in every possible combination. We have taken a flag value whhose initial value is 0 , is incremented 
+// whenever the condition (nums[i]==nums[j]) is  satisfied.
+
+class Solution {
+public:
+    int numIdenticalPairs(vector<int>& nums) {
+        int i,j;
+        int c=0;
+        for(i=0;i<nums.size();i++){
+            for(j=i+1;j<nums.size();j++){
+                if(nums[i]==nums[j]){
+                    c++;
+                }
+            }
+        }
+        return c;
+    }
+};
