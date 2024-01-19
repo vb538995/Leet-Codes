@@ -1,0 +1,19 @@
+//Find Lucky Integer in an Array
+//Using unordered map we can solve it easily as it stores data in key-value pairs and can be accessed easily 
+class Solution {
+public:
+    int findLucky(vector<int>& arr) {
+        unordered_map<int,int> track;
+        for(auto v :arr){
+            track[v]++;
+        }
+
+        int x=-1;
+        for(auto l : track){
+            if(l.first == l.second){
+                x = max(x,l.first);
+            }
+        }
+        return x;
+    }
+};
