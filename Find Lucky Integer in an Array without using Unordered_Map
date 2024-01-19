@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int findLucky(vector<int>& arr) {
+        int i,c,j,x=0;
+        for(i=0;i<arr.size();i++){
+            c=0;
+            
+            for(j=0;j<arr.size();j++){
+                
+                if(arr[i]==arr[j]){
+                    c++;
+                }
+            }
+            if(c>x && arr[i]==c){
+                x=arr[i];
+            }
+        }
+        if(x>0){
+                return x;
+        }
+        return -1;
+    }
+};
