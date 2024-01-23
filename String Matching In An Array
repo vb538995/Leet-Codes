@@ -1,0 +1,30 @@
+//String Matching In An Array 
+//Return all the string which are substring in all the elements present in the array .
+
+class Solution {
+public:
+    vector<string> stringMatching(vector<string>& words) {
+        int i,j,k=0;
+        vector<string> t;
+        if(words.size()==1){
+            return {};
+        }
+        for(i=0;i<words.size();i++){
+            for(j=0;j<words.size();j++){
+               if(i!=j && (words[i].find(words[j] )!= string::npos)){
+                    t.push_back(words[j]); 
+            }
+            }
+        }
+        set<string> p;
+        for(auto x : t){
+            p.insert(x);
+        }
+        t.clear();
+
+        for(auto it : p){
+            t.push_back(it);
+        }
+        return t;
+    }
+};
