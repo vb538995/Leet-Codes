@@ -1,0 +1,29 @@
+//LeetCode : 1431 Kids With Greatest Number Of Candies.
+
+// Try to understand the code and if any problem then ask me on insta id : @vb538995
+class Solution {
+public:
+    vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) {
+        int i,j;
+        int x,t;
+        vector<bool> a(candies.size());
+        for(i=0;i<candies.size();i++){
+            t=candies[i]+extraCandies;
+            x=1;
+            for(j=0;j<candies.size();j++){
+                if(t<candies[j]){
+                    x=0;
+                    break;
+                }
+            }
+            if(x==0){
+                a[i]=false;
+            }
+            else{
+                a[i]=true;
+            }
+
+        }
+        return a;
+    }
+};
