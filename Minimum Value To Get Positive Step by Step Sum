@@ -1,0 +1,30 @@
+// Minimum Value To get Positive step by step Sum
+// TRY TO UNDERSTAND THE CODE , IF NOT THEN FEEL FREE TO ASK ON INSTAGRAM ID : @vb538995 
+
+class Solution {
+public:
+    int minStartValue(vector<int>& nums) {
+        int i,j;
+        int x;  //flag 
+        int s=1;
+        int res=1;
+        while(x!=0){
+            res=s++;
+            for(i=0;i<nums.size();i++){
+                res=res+nums[i];
+                if(res<1){
+                    x=1;
+                    break;
+                }
+            }
+            if(res>=1){
+                x=0;
+            }
+        }
+        s--;
+        return s;
+        
+    }
+};
+
+// Please star my work if you find it useful for you by any chance.
