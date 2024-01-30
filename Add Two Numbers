@@ -1,0 +1,49 @@
+//LeetCode : 2. Add Two Numbers
+//These two numbers are stored in linked list , which is not a continuous memory allocation. we need to traverse the entire link list to gain the elements .
+// addtition also has situation of carry which makes this question bit complex to implement but the solution is here , feel free to access and understand the solution and ask 
+//any question regarding it on insta : @vb538995.
+
+
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        int i,j,x,c=0;
+        struct ListNode *m = new ListNode();
+        
+        ListNode *head=m;
+        while(l1!=NULL || l2!=NULL ){
+            x=0;
+            if(l1!=NULL){
+                x+=l1->val;
+                l1=l1->next;
+            }
+            if(l2!=NULL){
+                x+=l2->val;
+                l2=l2->next;
+            }
+            x+=c;
+            c=x/10;
+            ListNode *n = new ListNode(x%10);
+            m->next = n;
+            m = n;
+        }
+        if(c!=0){
+           ListNode* n = new ListNode(c);
+            m->next=n;
+            m=n;
+        }
+
+        return head->next;
+    }
+};
