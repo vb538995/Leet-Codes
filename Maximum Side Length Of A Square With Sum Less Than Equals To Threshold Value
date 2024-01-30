@@ -1,0 +1,31 @@
+//Leetcode : 1292 Maximum Side Length Of a Square With Sum Less Than Equals to Threshold Value
+//This is a tricky question , initially even o was not sure about the question that what is he asking but any chance i got to click to the point what is actually need and the concept 
+//behind the output. actuaaly this question shouldn't not be in the medium catergory rather its a good question and need to be shifted to HARD category.
+//It is next to impossible to understand the requirement of the question that need.
+
+class Solution {
+public:
+    int maxSideLength(vector<vector<int>>& mat, int threshold) {
+        int i,j,x=0,k;
+        int m=mat.size();
+        int n=mat[0].size();
+        int l=min(m,n); 
+        vector<vector<int>> dp(m+1,vector<int> (n+1,0));
+        for(i=0;i<mat.size();i++){
+            for(j=0;j<mat[0].size();j++){
+                dp[i+1][j+1] = mat[i][j]+dp[i+1][j]+dp[i][j+1]-dp[i][j];
+            }
+        }
+        for(k=l;k>0;k--){
+            for(i=k;i<m+1;i++){
+                for(j=k;j<n+1;j++){
+                    int sum = dp[i][j] - dp[i-k][j]-dp[i][j-k]+dp[i-k][j-k];
+                    if(sum<=threshold){
+                        return k;
+                    }
+                }
+            }
+        }
+return 0;
+    }
+};
