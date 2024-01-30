@@ -1,0 +1,26 @@
+//LeetCode : 1365 How Many Numbers Are Smaller Than Current Number
+//In this question the Approach to the question is easy as its need just on iterartion ofthe whole elements of the array .
+//Just create an array of equal to the size of the given array and jus take one variable , that can count the no. of smaller values than the current value and increment it after comparing
+// with all the values. after comparision store the variable values in the array with the same index at which the current value was present.
+//Please Like the Repository if you find it beneficial by any chance.
+
+class Solution {
+public:
+    vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
+        int i,j,x=0;
+        vector<int> b(nums.size());
+        for(i=0;i<nums.size();i++){
+            x=0;
+            for(j=0;j<nums.size();j++){
+                if(i==j){
+                    continue;
+                }
+                if(nums[j]<nums[i]){
+                    x++;
+                }
+            }
+            b[i]=x;
+        }
+        return b;
+    }
+};
