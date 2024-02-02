@@ -1,0 +1,36 @@
+LeetCode : 203 Remove Linked List Element
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        int i,j;
+        ListNode *temp;
+        ListNode *n =new ListNode();
+        ListNode *m;
+        m=n;
+        temp=head;
+        while(temp!=NULL ){
+            if(temp->val!=val){
+                m->next=temp;
+                m=m->next;
+                temp=temp->next;
+            }
+            else{
+                temp=temp->next;
+            }
+            m->next=NULL;
+        }
+        
+        return n->next;
+    }
+};
