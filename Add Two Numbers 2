@@ -1,0 +1,60 @@
+LeetCode :  445. Add Two Numbers 2
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+
+    ListNode* reverse(ListNode* head){
+        ListNode *m , *n;
+        m=head; n=NULL;
+        while(m!=NULL){
+            ListNode *prev=m->next;
+            m->next=n;
+            n=m;
+            m=prev;
+        }
+        return n;
+    } 
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode *m = reverse(l1);
+        
+        ListNode *n = reverse(l2);
+        
+        ListNode *temp = new ListNode();
+        ListNode *head;
+        head=temp;
+        
+        int c=0;
+        while(m!=NULL || n!=NULL){
+            int sum = (m!=NULL ? m->val:0) + (n!=NULL ? n->val:0)+c;
+            ListNode *s = new ListNode();
+            c=sum/10;
+            s->val=sum%10;
+            temp->next=s;
+            temp=s;
+            if(m!=NULL){
+                m=m->next;
+            }
+            if(n!=NULL){
+                n=n->next;
+            }
+        }
+        if(c!=0){
+            ListNode *s = new ListNode(c);
+            temp->next=s;
+            temp=s;
+        }
+        
+        head=head->next;
+        head=reverse(head);
+       return head;
+    }
+};
