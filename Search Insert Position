@@ -1,0 +1,17 @@
+LeetCode : 35 Search Insert Position
+//Linear Search Approach
+
+CODE: 
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int i=0,k;
+        for(i=0;i<nums.size();i++){
+            if(nums[i]>=target){
+                k=i;
+                break;
+            }
+        }
+        return k;
+    }
+};
