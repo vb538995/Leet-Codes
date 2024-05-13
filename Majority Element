@@ -1,0 +1,21 @@
+//LEETCODE : 169 Majority Element
+// The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+
+CODE :
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        unordered_map<int , int> a;
+        int x= nums.size()/2;
+        for( auto x : nums){
+            a[x]++;
+        }
+        for(auto i : a){
+            if(i.second>x){
+                return i.first;
+            }
+        }
+        return 0;
+        
+    }
+};
