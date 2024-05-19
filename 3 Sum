@@ -1,0 +1,37 @@
+//LeetCode : 15   3 Sum
+
+
+CODE : 
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        int i,j,k;
+        // int m=nums.size()/3;
+        set<vector<int>> s;
+        // vector<vector<int>> b(nums.size()/3,vector<int>(3));
+        vector<vector<int>> r;
+        sort(nums.begin(),nums.end());
+        for(i=0;i<nums.size();i++){
+            int a =i+1;
+            int b = nums.size()-1;
+            while(a<b){
+                    int sum = nums[i]+nums[a]+nums[b];
+                    if(sum==0){
+                        s.insert({nums[i], nums[a],nums[b]});
+                        a++;
+                        b--;
+                }
+                else if(sum<0){
+                    a++;
+                }else{
+                    b--;
+                }
+            }
+        
+    }
+    for(const auto x : s){
+            r.push_back(x);
+        }
+        return r;
+    }
+};
